@@ -6,7 +6,7 @@ A website that handle all the information about SMP Negeri 3 Kalikajar. This web
 
 1. Clone this project
 ````
-git clone https://github.com/amdmunif/spentika-sister.git
+   git clone https://github.com/amdmunif/spentika-sister.git
 ````
 3. Install dependencies from requirement
 ````
