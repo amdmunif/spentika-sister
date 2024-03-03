@@ -1,0 +1,39 @@
+{% extends "teacher/layout.html" %}
+
+{% block title %}
+    Article
+{% endblock %}
+
+{% block main %}
+    {% for teachers in teacher %}
+    <div class="col-lg-12 py-3">
+      <a href="/addArticle" class="btn btn-primary">Create Article</a>
+      <table id="example" class="table table-striped" style="width:100%">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Update Time</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for articles in article %}
+          <tr>
+            <td>{{ articles.title[:50] }}</td>
+            <td>{{ articles.content[:200] | striptags }}...</td>
+            <td>{{ articles.time }}</td>
+            <td>{{ articles.status }}</td>
+            <td>
+              <a href="/editArticle/{{ articles.id }}" class="btn btn-sm btn-warning">Edit</a>
+              <a href="/publishArticle/{{ articles.id }}" class="btn btn-sm btn-primary">Publish</a>
+              <a href="/deleteArticle/{{ articles.id }}" class="btn btn-sm btn-danger">Delete</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% endfor %}
+{% endblock %}

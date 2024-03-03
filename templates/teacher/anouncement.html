@@ -1,0 +1,39 @@
+{% extends "teacher/layout.html" %}
+
+{% block title %}
+    Anouncement
+{% endblock %}
+
+{% block main %}
+    {% for teachers in teacher %}
+    <div class="col-lg-12 py-3">
+      <a href="/addAnouncement" class="btn btn-primary">Create Anouncement</a>
+      <table id="example" class="table table-striped" style="width:100%">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Update Time</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for pengumumans in pengumuman %}
+          <tr>
+            <td>{{ pengumumans.title[:50] }}</td>
+            <td>{{ pengumumans.content[:200] | striptags }}...</td>
+            <td>{{ pengumumans.time }}</td>
+            <td>{{ pengumumans.status }}</td>
+            <td>
+              <a href="/editPengumuman/{{ pengumumans.id }}" class="btn btn-sm btn-warning">Edit</a>
+              <a href="/publishPengumuman/{{ pengumumans.id }}" class="btn btn-sm btn-primary">Publish</a>
+              <a href="/deletePengumuman/{{ pengumumans.id }}" class="btn btn-sm btn-danger">Delete</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "teacher/layout.html" %}
+
+{% block title %}
+    Buat Artikel
+{% endblock %}
+
+{% block main %}
+    {% for teachers in teacher %}
+    <div class="col-lg-12 py-3">
+      <p class="display-6">Buat Artikel</p>
+      <form method="POST" action="/saveArticle" class="form-control">
+
+        <div class="col-lg-5 py-1">
+          <label class="form-label">Judul</label>
+          <input type="text" class="form-control" name="title">
+        </div>
+
+        {% if teachers.role =="Admin" %}
+          <div class="col-lg-5 py-1">
+            <label class="form-label">Tipe Artikel</label>
+            <select class="form-select" name="type" aria-label="Default select">
+              <option selected disabled>Pilih Type Artikel</option>
+              <option value="Pengumuman">Pengumuman</option>
+              <option value="Artikel">Artikel</option>
+            </select>
+          </div>
+        {% else %}
+          <input type="hidden" name="type" value="Artikel">
+        {% endif %}
+
+        <div class="col-lg-12 py-1">
+          <label class="form-label">Konten Artikel</label>
+          <textarea name="content"></textarea>
+        </div>
+
+        <div class="col-lg-5 py-1">
+          <button class="btn btn-lg btn-primary">Simpan</button>
+        </div>
+
+      </form>
+    </div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block main %}
+  <div class="container" style="background: url(/static/img_1.jpg);background-size: cover;">
+    <div class="modal modal-sheet position-static d-block p-4 py-md-5">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content rounded-4 shadow">
+          <div class="modal-header p-5 pb-4 border-bottom-0">
+            <h1 class="fw-bold mb-0 fs-2">Teacher Login Area</h1>
+          </div>
+
+          {% if get_flashed_messages() %}
+            <header>
+                <div class="alert alert-dangerous mb-0 text-center py-3" role="alert">
+                    {{ get_flashed_messages() | join(" ") }}
+                </div>
+            </header>
+          {% endif %}
+
+          <div class="modal-body p-5 pt-0 py-3">
+            <form method="POST" action="/login">
+              <div class="form-floating mb-3">
+                <input type="email" class="form-control rounded-3" name="email" id="floatingEmail" placeholder="name@example.com">
+                <label for="floatingEmail">Email address</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="password" class="form-control rounded-3" name="password" id="floatingPassword" placeholder="Password">
+                <label for="floatingPassword">Password</label>
+              </div>
+              <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Log in</button>
+              <a href="/register" class="w-100 py-2 mb-2 btn btn-lg btn-outline-primary rounded-3">Sing up</a>
+              <small class="text-body-secondary">By clicking Log in / Sign up, you agree to the terms of use.</small>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "teacher/layout.html" %}
+
+{% block title %}
+    Feedback
+{% endblock %}
+
+{% block main %}
+    {% for teachers in teacher %}
+    <div class="col-lg-12 py-3">
+      <table id="example" class="table table-striped" style="width:100%">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Title</th>
+            <th>Email</th>
+            <th>Message</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for feedbacks in feedback %}
+          <tr>
+            <td>{{ feedbacks.name }}</td>
+            <td>{{ feedbacks.title[:20] }}</td>
+            <td>{{ feedbacks.email }}...</td>
+            <td>{{ feedbacks.message[:100] }}</td>
+            <td>{{ feedbacks.status }}</td>
+            <td>
+              <a href="/editFeedback/{{ feedbacks.id }}" class="btn btn-sm btn-warning">Edit</a>
+              <a href="/publishFeedback/{{ feedbacks.id }}" class="btn btn-sm btn-primary">Response</a>
+              <a href="/deleteFeedback/{{ feedbacks.id }}" class="btn btn-sm btn-danger">Delete</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% endfor %}
+{% endblock %}
